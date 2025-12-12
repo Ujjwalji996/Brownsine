@@ -1,0 +1,121 @@
+:root{
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-strong: rgba(0,0,0,0.35);
+  --border: rgba(255,255,255,0.25);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+*{ box-sizing: border-box; }
+body{ font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:#fff; }
+
+/* Animated background using 3 colors (set via inline CSS vars) */
+.bg-animated{
+  position: fixed; inset:0; z-index:-2;
+  background: radial-gradient(1200px 800px at 0% 0%, var(--c1) 0%, transparent 60%),
+              radial-gradient(1000px 900px at 100% 0%, var(--c2) 0%, transparent 60%),
+              radial-gradient(800px 1100px at 50% 100%, var(--c3) 0%, transparent 60%),
+              linear-gradient(120deg, #101220, #0b0f1a 60%, #0a0a0f);
+  filter: saturate(1.2);
+  animation: floatBg 24s ease-in-out infinite alternate;
+}
+@keyframes floatBg{
+  0%{ background-position: 0 0, 100% 0, 50% 100%, 0 0; }
+  100%{ background-position: 10% 5%, 90% 10%, 48% 95%, 0 0; }
+}
+
+/* subtle grain */
+.grain{
+  position: fixed; inset:0; z-index:-1;
+  background-image: url('../img/pattern.svg');
+  opacity:.06; pointer-events:none;
+  mix-blend-mode: overlay;
+}
+
+/* Glass UI */
+.card.glass{
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+.glass-weak{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+.glass-strong{
+  background: var(--glass-strong);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Inputs */
+.form-control-glass{
+  background: rgba(255,255,255,0.12)!important;
+  color: #fff!important;
+  border: 1px solid rgba(255,255,255,0.25)!important;
+  border-radius: 14px!important;
+}
+.form-control-glass::placeholder{ color: rgba(255,255,255,0.6); }
+.form-control-glass:focus{
+  outline: none;
+  box-shadow: 0 0 0 .25rem rgba(255,255,255,0.08)!important;
+}
+
+/* Buttons */
+.btn-pill{ border-radius: 999px; }
+.btn-primary{
+  background: linear-gradient(135deg, var(--c1), var(--c2))!important;
+  border: none;
+}
+.btn-outline-light{
+  border-color: rgba(255,255,255,0.6)!important;
+  color: #fff!important;
+}
+.btn-danger{
+  background: linear-gradient(135deg, #ff512f, #dd2476)!important;
+  border: none;
+}
+.btn-success{
+  background: linear-gradient(135deg, #00c853, #64dd17)!important;
+  border: none;
+}
+
+/* Chips & badges */
+.chip{
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  font-size: .85rem;
+}
+.bg-glow{
+  background: linear-gradient(135deg, var(--c2), var(--c3));
+  border: 1px solid rgba(255,255,255,.3);
+}
+
+/* Pretty headings */
+.text-gradient{
+  background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+/* Answer block */
+.answer-text{
+  white-space: pre-wrap; line-height: 1.7;
+  font-size: 1.03rem;
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+/* Scrollbar (WebKit) */
+::-webkit-scrollbar{ width: 10px; height:10px; }
+::-webkit-scrollbar-track{ background: rgba(255,255,255,0.05); }
+::-webkit-scrollbar-thumb{ background: linear-gradient(var(--c2), var(--c3)); border-radius: 999px; }
+
+/* Navbar brand tweak */
+.navbar-brand{ letter-spacing:.3px; }

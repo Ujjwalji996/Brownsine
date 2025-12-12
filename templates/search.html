@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Search Result • Plantopedia{% endblock %}
+{% block c1 %}#34e89e{% endblock %}{% block c2 %}#0f3443{% endblock %}{% block c3 %}#8e2de2{% endblock %}
+
+{% block content %}
+<div class="card glass p-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <h3 class="m-0 text-gradient">Result for: <span class="fw-bold">{{ query }}</span></h3>
+    <a href="{{ url_for('home') }}" class="btn btn-pill btn-outline-dark"><i class="bi bi-arrow-left"></i> Back</a>
+  </div>
+  <hr class="border-light opacity-25">
+  <div id="answer" class="answer-text">{{ answer|safe }}</div>
+
+  <div class="d-flex gap-2 mt-3">
+    <button class="btn btn-pill btn-success" onclick="copyText('answer')"><i class="bi bi-clipboard-check"></i> Copy</button>
+    <a class="btn btn-pill btn-outline-dark" href="{{ url_for('history') }}"><i class="bi bi-clock-history"></i> View History</a>
+  </div>
+</div>
+{% endblock %}
